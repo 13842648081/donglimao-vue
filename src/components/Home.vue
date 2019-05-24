@@ -1,9 +1,12 @@
 <template>
-  <ul>
-    <li v-for="(product, index) in productList" :key="product.id+index">
-      {{product.id}}
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li v-for="(product, index) in productList" :key="product.id+index">
+        <router-link :to="`/product`">{{product.id}}</router-link>
+      </li>
+    </ul>
+    <button v-on:click="test">alert test button</button>
+  </div>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
@@ -17,6 +20,9 @@ export default {
     ...mapState('home', ['productList'])
   },
   methods: {
+    test () {
+      alert('test')
+    },
     ...mapActions('home', ['fetchList'])
   },
   created () {
